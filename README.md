@@ -38,6 +38,8 @@ export class MyModule {}
 
 ## Usage
 
+scrollDuration and scrollOffset is optional parameters.
+
 ### Directive
 
 ```html
@@ -95,11 +97,6 @@ Run `npm test` to run tests once or `npm run test:watch` to continually run test
 ```bash
 npm run release
 ```
-
-## Credits
-
-Rewritten from [ng-bootstrap](https://github.com/ng-bootstrap) [@ng-bootstrap/ng-bootstrap](https://github.com/ng-bootstrap/ng-bootstrap) 
-and adapted for use with angular 4
 
 ## License
 
