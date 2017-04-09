@@ -1,1 +1,3 @@
-export * from './example.module';
+export * from './scrollTo.module';
+export * from './scrollTo.service';
+export * from './scrollTo.directive';

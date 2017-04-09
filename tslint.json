@@ -49,8 +49,6 @@
       "check-separator",
       "check-type"
     ],
-    "directive-selector": [true, "attribute", "bs", "camelCase"],
-    "component-selector": [true, "element", "bs", "kebab-case"],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": false,
@@ -59,7 +57,6 @@
     "no-forward-ref": true,
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
-    "pipe-naming": [true, "camelCase", "bs"],
     "component-class-suffix": true,
     "directive-class-suffix": true,
     "import-destructuring-spacing": true,

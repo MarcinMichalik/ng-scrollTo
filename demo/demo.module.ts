@@ -1,13 +1,15 @@
 import {NgModule} from '@angular/core';
 import {DemoComponent} from './demo.component';
 import {BrowserModule} from '@angular/platform-browser';
+import {ScrollToModule} from '../src/scrollTo.module';
 
 @NgModule({
     declarations: [
         DemoComponent
     ],
     imports: [
-        BrowserModule
+        BrowserModule,
+        ScrollToModule.forRoot()
     ],
     bootstrap: [
         DemoComponent

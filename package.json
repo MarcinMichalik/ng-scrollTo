@@ -19,7 +19,7 @@
     "url": "https://github.com/MarcinMichalik/ng-scrollTo/issues"
   },
   "homepage": "https://github.com/MarcinMichalik/ng-scrollTo#readme",
-  "main": "./bundles/bsmodal.umd.js",
+  "main": "./bundles/ngScrollTo.umd.js",
   "module": "./index.js",
   "typings": "./index.d.ts",
   "scripts": {
