@@ -1,5 +1,5 @@
 {
-  "name": "@mm2/ng-scrollTo",
+  "name": "ng2-scroll-to-el",
   "version": "1.0.0",
   "description": "Scroll to element library for agnualr 2+",
   "author": "Marcin Michalik",

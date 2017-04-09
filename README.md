@@ -1,4 +1,4 @@
-# @mm2/g-scrollTo
+# ng2-scroll-to-el
 
 ## Demo
 https://MarcinMichalik.github.io/ng-scrollTo/
@@ -19,14 +19,14 @@ Simple scrollTo directive for Angular 2+. You can use it to scroll to element on
 
 Install through npm:
 ```
-npm install --save @mm2/ng-scrollTo
+npm install --save ng2-scroll-to-el
 ```
 
 Then include in your apps module:
 
 ```typescript
 import { Component, NgModule } from '@angular/core';
-import { ScrollToModule } from '@mm2/ng-scrollTo';
+import { ScrollToModule } from 'ng2-scroll-to-el';
 
 @NgModule({
   imports: [
@@ -61,7 +61,7 @@ You may also find it useful to view the [demo source](https://github.com/MarcinM
 You may also find it useful to view the [demo source](https://github.com/MarcinMichalik/ng-scrollTo/blob/master/demo/demo.component.html).
 
 ```typescript
-import { ScrollToService } from '@mm2/ng-scrollTo';
+import { ScrollToService } from 'ng2-scroll-to-el';
 
 export class DemoComponent {
 
