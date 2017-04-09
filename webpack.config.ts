@@ -23,10 +23,22 @@ export default {
                 options: { configFileName: path.join(__dirname, 'tsconfig.json') }
             }, 'angular2-template-loader'],
             exclude: /node_modules/
-        }, {
-            test: /\.html$/,
-            loader: 'html-loader'
-        }]
+        },
+            {
+                test: /\.(html|css)$/,
+                loader: 'raw-loader',
+                exclude: /\.async\.(html|css)$/
+            },
+            /* Async loading. */
+            {
+                test: /\.async\.(html|css)$/,
+                loaders: ['file?name=[name].[hash].[ext]', 'extract']
+            }
+            // {
+            //     test: /\.html$/,
+            //     loader: 'html-loader'
+            // }
+        ]
     },
     resolve: {
         extensions: ['.ts', '.js']
