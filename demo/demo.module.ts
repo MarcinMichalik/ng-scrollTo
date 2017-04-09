@@ -1,7 +1,7 @@
-import {NgModule} from '@angular/core';
-import {DemoComponent} from './demo.component';
-import {BrowserModule} from '@angular/platform-browser';
-import {ScrollToModule} from '../src/scrollTo.module';
+import { NgModule } from '@angular/core';
+import { DemoComponent } from './demo.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { ScrollToModule } from '../src';
 
 @NgModule({
     declarations: [

@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {ScrollToService} from '../src/scrollTo.service';
+import { Component } from '@angular/core';
+import { ScrollToService } from '../src';
 
 @Component({
     selector: 'demo-app',
