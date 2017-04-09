@@ -15,6 +15,6 @@ import { ScrollToModule } from '../src';
         DemoComponent
     ]
 })
-export class DemoModule{
+export class DemoModule {
 
 }

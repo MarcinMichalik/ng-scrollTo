@@ -18,12 +18,27 @@ export default {
             enforce: 'pre'
         }, {
             test: /\.ts$/,
-            loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
+            loaders: [{
+                loader: 'awesome-typescript-loader',
+                options: { configFileName: path.join(__dirname, 'tsconfig.json') }
+            }, 'angular2-template-loader'],
             exclude: /node_modules/
-        }, {
-            test: /\.html$/,
-            loader: 'html-loader'
-        }]
+        },
+            {
+                test: /\.(html|css)$/,
+                loader: 'raw-loader',
+                exclude: /\.async\.(html|css)$/
+            },
+            /* Async loading. */
+            {
+                test: /\.async\.(html|css)$/,
+                loaders: ['file?name=[name].[hash].[ext]', 'extract']
+            }
+            // {
+            //     test: /\.html$/,
+            //     loader: 'html-loader'
+            // }
+        ]
     },
     resolve: {
         extensions: ['.ts', '.js']
@@ -41,6 +56,7 @@ export default {
         }),
         new webpack.ContextReplacementPlugin(
             /angular(\\|\/)core(\\|\/)@angular/,
+            // /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
             path.join(__dirname, 'src')
         ),
         new HtmlWebpackPlugin({
