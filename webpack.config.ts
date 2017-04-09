@@ -18,7 +18,10 @@ export default {
             enforce: 'pre'
         }, {
             test: /\.ts$/,
-            loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
+            loaders: [{
+                loader: 'awesome-typescript-loader',
+                options: { configFileName: path.join(__dirname, 'tsconfig.json') }
+            }, 'angular2-template-loader'],
             exclude: /node_modules/
         }, {
             test: /\.html$/,
@@ -41,6 +44,7 @@ export default {
         }),
         new webpack.ContextReplacementPlugin(
             /angular(\\|\/)core(\\|\/)@angular/,
+            // /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
             path.join(__dirname, 'src')
         ),
         new HtmlWebpackPlugin({
