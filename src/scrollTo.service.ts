@@ -18,7 +18,9 @@ export class ScrollToService {
 
     private scrollToElement(el: HTMLElement, duration: number, offset: number) {
         if (el) {
-            this.doScrolling(el.offsetTop + offset, duration);
+			let viewportOffset = el.getBoundingClientRect();
+			let offsetTop = viewportOffset.top + window.pageYOffset;
+            this.doScrolling(offsetTop + offset, duration);
         } else {
             throw new Error('I don\'t find element');
         }
