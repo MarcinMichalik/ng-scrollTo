@@ -9,6 +9,7 @@ export class ScrollToDirective implements OnInit {
     @Input('scrollTo') scrollTo: any;
     @Input('scrollDuration') scrollDuration: number;
     @Input('scrollOffset') scrollOffset: number;
+    @Input('container') container: string;
 
     constructor(private scrollToService: ScrollToService) {}
 
@@ -19,6 +20,6 @@ export class ScrollToDirective implements OnInit {
 
     @HostListener('mousedown')
     onMouseClick() {
-        this.scrollToService.scrollTo(this.scrollTo, this.scrollDuration, this.scrollOffset);
+        this.scrollToService.scrollTo(this.scrollTo, this.scrollDuration, this.scrollOffset, this.container);
     }
 }
