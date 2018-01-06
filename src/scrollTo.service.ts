@@ -6,12 +6,20 @@ import { isNullOrUndefined } from 'util';
 
 @Injectable()
 export class ScrollToService {
-    // TODO:         @Inject(WINDOW) private _window: Window consider injecting a window service
+
     constructor(
         @Inject(DOCUMENT) private _document: any,
         public ngZone: NgZone
     ) {}
 
+    /**
+     * Determine which element we need to scroll to
+     * @param {string | HTMLElement} element
+     * @param {number} duration
+     * @param {number} offset
+     * @param {string} container
+     * @returns {Observable<any>}
+     */
     public scrollTo(element: string | HTMLElement, duration: number = 500, offset: number = 0, container: string = null): Observable<any> {
 		let subject: Subject<any> = new Subject<any>();
         if (typeof element === 'string') {
@@ -25,6 +33,15 @@ export class ScrollToService {
         return subject;
     }
 
+    /**
+     * Determine the scrolling distance to a specified element
+     * @param {HTMLElement} el
+     * @param {number} duration
+     * @param {number} offset
+     * @param container
+     * @param subject
+     * @returns {any}
+     */
     private scrollToElement(el: HTMLElement, duration: number, offset: number, container, subject) {
         if (el) {
 			const viewportOffset = el.getBoundingClientRect();
@@ -37,6 +54,13 @@ export class ScrollToService {
         return subject;
     }
 
+    /**
+     * Scroll to the specified element either in the window for a specified container
+     * @param elementY
+     * @param duration
+     * @param container
+     * @param {Subject<any>} subject
+     */
     private doScrolling(elementY, duration, container, subject: Subject<any>) {
         const _document = this._document; // we need access to a constant instance of the body to use outside the ngZone
         const startingY = isNullOrUndefined(container) ? window.pageYOffset : _document.querySelector(container).scrollTop;
