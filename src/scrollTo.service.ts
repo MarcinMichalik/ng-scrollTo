@@ -39,7 +39,7 @@ export class ScrollToService {
 
     private doScrolling(elementY, duration, container, subject: Subject<any>) {
         const _document = this._document;
-        const startingY = isNullOrUndefined(container) ? window.pageYOffset : _document.querySelector('#layout_container').scrollTop;
+        const startingY = isNullOrUndefined(container) ? window.pageYOffset : _document.querySelector(container).scrollTop;
         const diff = elementY - startingY;
         let start;
 
