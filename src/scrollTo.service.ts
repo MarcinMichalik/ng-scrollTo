@@ -15,12 +15,12 @@ export class ScrollToService {
     public scrollTo(element: string | HTMLElement, duration: number = 500, offset: number = 0, container: string = null): Observable<any> {
 		let subject: Subject<any> = new Subject<any>();
         if (typeof element === 'string') {
-            let el = <HTMLElement>this._document.querySelector(`#${element}`);
+            let el = <HTMLElement>this._document.querySelector(element);
             this.scrollToElement(el, duration, offset, container, subject);
         }else if (element instanceof HTMLElement) {
             this.scrollToElement(element, duration, offset, container, subject);
         }else {
-			subject.error('I don\'t find element');
+			subject.error(`I don't find element`);
         }
         return subject;
     }
@@ -29,16 +29,16 @@ export class ScrollToService {
         if (el) {
 			const viewportOffset = el.getBoundingClientRect();
 			const offsetTop = isNullOrUndefined(container) ? viewportOffset.top + window.pageYOffset
-                : this._document.querySelector('#layout_container').scrollTop + viewportOffset.top;
+                : this._document.querySelector(container).scrollTop + viewportOffset.top;
             this.doScrolling(offsetTop + offset, duration, container, subject);
         } else {
-        	subject.error('I don\'t find element');
+        	subject.error(`I don't find element`);
         }
         return subject;
     }
 
     private doScrolling(elementY, duration, container, subject: Subject<any>) {
-        const _document = this._document;
+        const _document = this._document; // we need access to a constant instance of the body to use outside the ngZone
         const startingY = isNullOrUndefined(container) ? window.pageYOffset : _document.querySelector(container).scrollTop;
         const diff = elementY - startingY;
         let start;
@@ -51,7 +51,7 @@ export class ScrollToService {
                 const percent = Math.min(time / duration, 1);
 
                 if (!isNullOrUndefined(container)) {
-                 _document.querySelector('#layout_container').scrollTop = startingY + diff * percent;
+                 _document.querySelector(container).scrollTop = startingY + diff * percent;
                 } else {
                     window.scrollTo(0, startingY + diff * percent);
                 }
