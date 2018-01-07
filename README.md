@@ -22,6 +22,12 @@ Install through npm:
 npm install --save ng2-scroll-to-el
 ```
 
+@DarthFarzad pull request (not yet merged)
+
+```
+npm install --save ng2-scroll-to-el@next
+```
+
 Then include in your apps module:
 
 ```typescript
