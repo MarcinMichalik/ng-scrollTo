@@ -2,23 +2,23 @@ import { Directive, HostListener, Input, OnInit } from '@angular/core';
 import { ScrollToService } from './scrollTo.service';
 
 @Directive({
-    selector: '[scrollTo]'
+	selector: '[scrollTo]'
 })
 export class ScrollToDirective implements OnInit {
 
-    @Input('scrollTo') scrollTo: any;
-    @Input('scrollDuration') scrollDuration: number;
-    @Input('scrollOffset') scrollOffset: number;
+	@Input() scrollTo: any;
+	@Input() scrollDuration: number;
+	@Input() scrollOffset: number;
 
-    constructor(private scrollToService: ScrollToService) {}
+	constructor(private scrollToService: ScrollToService) {}
 
-    ngOnInit(): void {
-        this.scrollDuration = (!this.scrollDuration) ? 500 : this.scrollDuration;
-        this.scrollOffset = (!this.scrollOffset) ? 0 : this.scrollOffset;
-    }
+	ngOnInit(): void {
+		this.scrollDuration = (!this.scrollDuration) ? 500 : this.scrollDuration;
+		this.scrollOffset = (!this.scrollOffset) ? 0 : this.scrollOffset;
+	}
 
-    @HostListener('mousedown')
-    onMouseClick() {
-        this.scrollToService.scrollTo(this.scrollTo, this.scrollDuration, this.scrollOffset);
-    }
+	@HostListener('mousedown')
+	onMouseClick() {
+		this.scrollToService.scrollTo(this.scrollTo, this.scrollDuration, this.scrollOffset);
+	}
 }
