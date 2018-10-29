@@ -6,9 +6,9 @@ import { ScrollToService } from './scrollTo.service';
 })
 export class ScrollToDirective implements OnInit {
 
-    @Input('scrollTo') scrollTo: any;
-    @Input('scrollDuration') scrollDuration: number;
-    @Input('scrollOffset') scrollOffset: number;
+	@Input() scrollTo: any;
+	@Input() scrollDuration: number;
+	@Input() scrollOffset: number;
 
     constructor(private scrollToService: ScrollToService) {}
 

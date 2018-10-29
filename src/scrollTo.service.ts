@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable()
 export class ScrollToService {
@@ -12,9 +11,9 @@ export class ScrollToService {
         if (typeof element === 'string') {
             let el = document.querySelector(element as string);
             this.scrollToElement(el as HTMLElement, duration, offset, subject);
-        }else if (element instanceof HTMLElement) {
+        } else if (element instanceof HTMLElement) {
             this.scrollToElement(element, duration, offset, subject);
-        }else {
+        } else {
 			subject.error('I don\'t find element');
         }
         return subject;
@@ -47,7 +46,7 @@ export class ScrollToService {
             if (time < duration) {
                 window.requestAnimationFrame(step);
                 subject.next({});
-            }else {
+            } else {
             	subject.complete();
 			}
         });
