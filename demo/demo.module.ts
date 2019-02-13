@@ -9,7 +9,10 @@ import { ScrollToModule } from '../src/scrollTo.module';
     ],
     imports: [
         BrowserModule,
-        ScrollToModule.forRoot()
+        ScrollToModule.forRoot({
+			duration: 1000,
+			offset: 200,
+		}),
     ],
     bootstrap: [
         DemoComponent

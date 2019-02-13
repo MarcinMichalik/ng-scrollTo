@@ -1,7 +1,8 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScrollToDirective } from './scrollTo.directive';
 import { ScrollToService } from './scrollTo.service';
+import { DEFAULT_CONFIG, Ng2DefaultConfiguration, Ng2ScrollToConfiguration } from './scrollTo.config';
 
 @NgModule({
     declarations: [
@@ -14,13 +15,17 @@ import { ScrollToService } from './scrollTo.service';
         ScrollToDirective
     ],
     providers: [
-        ScrollToService
-    ]
+        ScrollToService,
+		{provide: DEFAULT_CONFIG, useValue: new Ng2DefaultConfiguration()},
+    ],
 })
 export class ScrollToModule {
-    static forRoot(): ModuleWithProviders {
+    static forRoot(config?: Ng2ScrollToConfiguration): ModuleWithProviders {
         return {
-            ngModule: ScrollToModule
+            ngModule: ScrollToModule,
+			providers: [{
+				provide: DEFAULT_CONFIG, useValue: config || new Ng2DefaultConfiguration(),
+			}],
         };
     }
 }
