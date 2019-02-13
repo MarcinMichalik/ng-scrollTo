@@ -26,8 +26,8 @@ export class ScrollToDirective implements OnInit {
         this.offset = opts.offset;
     }
 
-    @HostListener('mousedown')
-    onMouseClick() {
-        this.scrollToService.scrollTo(this.scrollTo, this.scrollDuration, this.scrollOffset);
+    @HostListener('click', ['$event'])
+    onMouseClick($event?: MouseEvent) {
+        this.scrollToService.scrollTo(this.to, this.duration, this.offset);
     }
 }
