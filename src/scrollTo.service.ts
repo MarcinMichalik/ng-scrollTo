@@ -1,20 +1,22 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Observable ,  Subject } from 'rxjs';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 
+/** @dynamic */
 @Injectable()
 export class ScrollToService {
 
-    constructor() {}
+    constructor(@Inject(PLATFORM_ID) protected platformId: string,
+				@Inject(DOCUMENT) protected document: Document) { }
 
     public scrollTo(element: string | HTMLElement, duration: number = 500, offset: number = 0): Observable<any> {
 		let subject: Subject<any> = new Subject<any>();
-        if (typeof element === 'string') {
-            let el = document.querySelector(element as string);
+        if (typeof element === 'string' && isPlatformBrowser(this.platformId)) {
+            let el = this.document.querySelector(element as string);
             this.scrollToElement(el as HTMLElement, duration, offset, subject);
-        }else if (element instanceof HTMLElement) {
+        } else if (element instanceof HTMLElement) {
             this.scrollToElement(element, duration, offset, subject);
-        }else {
+        } else {
 			subject.error('I don\'t find element');
         }
         return subject;
@@ -32,6 +34,8 @@ export class ScrollToService {
     }
 
     private doScrolling(elementY, duration, subject: Subject<any>) {
+    	if (!isPlatformBrowser(this.platformId)) return;
+
         const startingY = window.pageYOffset;
         const diff = elementY - startingY;
         let start;
@@ -47,7 +51,7 @@ export class ScrollToService {
             if (time < duration) {
                 window.requestAnimationFrame(step);
                 subject.next({});
-            }else {
+            } else {
             	subject.complete();
 			}
         });

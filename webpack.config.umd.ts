@@ -38,10 +38,10 @@ export default {
         extensions: ['.ts', '.js']
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            include: /\.min\.js$/,
-            sourceMap: true
-        }),
+        // new webpack.optimize.UglifyJsPlugin({
+        //     include: /\.min\.js$/,
+        //     sourceMap: true
+        // }),
         new webpack.ContextReplacementPlugin(
             /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
             path.join(__dirname, 'src')
