@@ -54,7 +54,7 @@
     "angular2-template-loader": "^0.6.0",
     "awesome-typescript-loader": "^3.0.8",
     "chai": "^3.5.0",
-    "codecov": "^2.1.0",
+    "codecov": "^3.6.5",
     "codelyzer": "^2.0.0",
     "commitizen": "^2.8.1",
     "compodoc": "^0.0.41",
